@@ -1,3 +1,6 @@
+### Teste Desafio Técnico – Vaga de Desenvolvedor Python | C2S Objetivo: Avaliar sua capacidade de aprender coisas novas, com foco em tecnologias que talvez você ainda não tenha usado, e também seu domínio de Python.
+
+
 ## Configuração e instalação do ambiente via docker compose☕️
  
 
