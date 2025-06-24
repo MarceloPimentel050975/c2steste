@@ -1,0 +1,25 @@
+from datetime import datetime
+from peewee import *
+
+import entity
+
+# define a conexão com o banco de dados
+db = SqliteDatabase('c2s.db')
+
+
+if __name__ == "__main__":
+    try:
+        # Conectar ao banco de dados
+        db.connect()
+        # Criar as tabelas (se não existirem)
+        # A ordem é importante devido às chaves estrangeiras:
+        # Marca -> Modelo -> Veiculo
+        db.create_tables([entity.Marca, Modelo, Veiculo])
+        print("Tabelas criadas com sucesso ou já existentes.")
+
+    except OperationalError as e:
+        print(f"Erro ao conectar ou criar tabelas: {e}")
+    finally:
+        # Sempre feche a conexão com o banco de dados
+        if not db.is_closed():
+            db.close()

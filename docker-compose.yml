@@ -1,0 +1,30 @@
+services:
+  #mcp_server:
+    #build:
+      #context: .           
+      #dockerfile: Dockerfile
+    #container_name: mcp_application_server
+    #volumes:
+      #- mcp_data_server:/app/data
+
+    #command: mcp dev main_server_mcp.py
+
+    #restart: on-failure 
+
+  db_c2s:
+    image: postgres:latest
+    restart: always
+    container_name: db_c2s
+    environment:
+      POSTGRES_DB: c2s_teste
+      POSTGRES_USER: c2s
+      POSTGRES_PASSWORD: c2s
+    ports:
+      - "5432:5432" # Maps host port 5432 to cont7ainer port 5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data # Persist data in a named volume
+      - ./scripts_seed_database/bulk.sql:/docker-entrypoint-initdb.d/bulk.sql
+
+volumes:
+  #mcp_data_server: 
+  pgdata:

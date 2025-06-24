@@ -1,0 +1,8 @@
+pandas
+mcp[cli]
+peewee
+fake
+pytest
+uv
+psycopg2-binary
+mcp-client-cli
